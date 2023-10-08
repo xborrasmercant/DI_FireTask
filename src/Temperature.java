@@ -1,3 +1,4 @@
+
 public class Temperature {
     int width;
     int height;
@@ -13,6 +14,17 @@ public class Temperature {
         this.temps = new int[height][width];
     }
 
+    private void cold() {
+        double randPercentage;
+        for (int col = 0; col < width; col++) {
+            randPercentage = Math.random();
+            if (randPercentage <= percentageColdPoints) {
+                temps[height - 1][col] = 0;
+            }
+        }
+    }
+
+
     private void sparks() {
         double randPercentage;
         for (int col = 0; col < width; col++) {
@@ -26,7 +38,6 @@ public class Temperature {
     private void calc() {
         int avgTemp;
         for (int row = width-1; row >= 0; row--) {
-            System.out.println("hola");
             for (int col = 0; col < height; col++) {
                 if (row != 0) {
                     if (col == 0) {
@@ -38,13 +49,12 @@ public class Temperature {
                     else {
                         avgTemp = (temps[row][col-1] + temps[row][col] + temps[row][col+1] + temps[row-1][col]) / 4;
                     }
-
-                    System.out.println("CurrentPos: " + temps[row][col]);
-                    System.out.println("AvgTemp: " + avgTemp);
                     temps[row-1][col] = avgTemp;
+
                 }
             }
         }
+        this.printTemps();
     }
 
     private void printTemps(){
@@ -58,13 +68,39 @@ public class Temperature {
             }
             System.out.println();
         }
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
     }
 
     public static void main(String[] args) {
-        Temperature tempsMap = new Temperature(10,10,0.3, 0.3);
+        Temperature tempsMap = new Temperature(20,20,0.3, 0.3);
 
-        tempsMap.sparks();
-        tempsMap.calc();
-        tempsMap.printTemps();
+        while (true) {
+            tempsMap.cold();
+            tempsMap.sparks();
+            tempsMap.calc();
+        }
+
     }
 }
