@@ -73,33 +73,21 @@ public class Temperature {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
     }
+
+
+    public void next(){
+        this.cold();
+        this.sparks();
+        this.calc();
+    }
+
 
     public static void main(String[] args) {
         Temperature tempsMap = new Temperature(20,20,0.3, 0.3);
 
         while (true) {
-            tempsMap.cold();
-            tempsMap.sparks();
-            tempsMap.calc();
+            tempsMap.next();
         }
 
     }
