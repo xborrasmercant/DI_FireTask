@@ -10,8 +10,7 @@ public class Palette {
         for (int row = 0; row < colourPalette.length - 1; row++) {
             for (int col = 0; col < colourPalette[row].length; col++) {
                 System.out.print(" | " + colourPalette[row][col] + " | ");
-
-            }
+             }
             System.out.println();
         }
     }
@@ -48,6 +47,19 @@ public class Palette {
         System.out.println();
         */
     }
+
+
+    private void calcChn(int A, int B, int colourPos, int chnPos) {
+        int C;
+        int NSteps = A-B;
+        int increment = B/NSteps;
+
+        for (int step = 0; step < NSteps; step++) {
+            C = A + step * increment;
+            colourPalette[colourPos][chnPos] = C;
+        }
+    }
+
 
     private void calc(){
         // To be continued
