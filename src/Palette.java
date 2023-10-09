@@ -49,20 +49,69 @@ public class Palette {
     }
 
 
-    private void calcChn(int A, int B, int colourPos, int chnPos) {
-        int C;
-        int NSteps = A-B;
+
+
+
+
+
+
+
+
+
+
+
+    private void calc(){
+        int palettePosition = colourTargets.get(0)[0];
+        for (int colourTarget = 0; colourTarget < colourTargets.size(); colourTarget++) {
+            for (int colourChannel = 1; colourChannel < colourTargets.size(); colourChannel++) {
+                for (int channelPos = 0; channelPos < 4; channelPos++) {
+                    calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget+1), palettePosition, channelPos);
+                }
+
+
+                int A = colourTargets.get(colourTarget)[colourChannel];
+                int B = colourTargets.get(colourTarget+1)[colourChannel];
+
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+    private void calcChannel(int[] colourTarget1, int[] colourTarget2, int palettePosition, int channelPos) {
+        int A, B, C;
+            A = colourTargets.get(colourTarget1)[channelPos];
+            B = colourTargets.get(colourTarget1)[channelPos];
+        int NSteps = colourTarget1-colourTarget2;
         int increment = B/NSteps;
+
+
 
         for (int step = 0; step < NSteps; step++) {
             C = A + step * increment;
-            colourPalette[colourPos][chnPos] = C;
+            colourPalette[colourPos][channelPos] = C;
         }
     }
 
 
     private void calc(){
-        // To be continued
+        int palettePosition = colourTargets.get(0)[0];
+        for (int colourTarget = 0; colourTarget < colourTargets.size(); colourTarget++) {
+            for (int colourChannel = 1; colourChannel < colourTargets.size(); colourChannel++) {
+                int A = colourTargets.get(colourTarget)[colourChannel];
+                int B = colourTargets.get(colourTarget+1)[colourChannel];
+                calcChannel(A, B, palettePosition, 0);
+                calcChannel(A, B, palettePosition, 1);
+                calcChannel(A, B, palettePosition, 2);
+                calcChannel(A, B, palettePosition, 3);
+            }
+        }
     }
 
     private void printColourTargets() {
