@@ -9,11 +9,13 @@ import java.awt.event.*;
 public class FireTask extends JFrame {
 
     public FireTask (int width, int height) {
-        Viewer background = new Viewer();
+        Viewer background = new Viewer(650,650);
 
         add(background);
         setSize(width, height);
         configureFrame();
+        setVisible(true);
+
         background.createBufferStrategy(2);
         background.paintBackground();
 
@@ -31,7 +33,6 @@ public class FireTask extends JFrame {
         Temperature tempsMap = new Temperature(5,5,0.3, 0.3);
         FireTask mainWindow = new FireTask(1000, 750);
 
-        mainWindow.setVisible(true);
 
 
 
