@@ -51,17 +51,20 @@ public class Palette {
 
     private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
         int A, B, C, step, NSteps, increment;
-        A = colourTarget1[channelPos];
-        B = colourTarget2[channelPos];
+        A = colourTarget1[channelPos+1];
+        B = colourTarget2[channelPos+1];
         step = 1;
-        NSteps = colourTarget1[0] - colourTarget2[0];
+        NSteps = colourTarget2[0] - colourTarget1[0];
         increment = B / NSteps;
 
+        System.out.println("CHANNEL" + channelPos);
         for (int paletteColour = colourTarget1[0]; paletteColour < colourTarget2[0]; paletteColour++) {
             C = A + step * increment;
-        colourPalette[paletteCoªlour][channelPos] = C;
+            System.out.println(C);
+        colourPalette[paletteColour][channelPos] = C;
             step++;
         }
+
     }
 
     private void calc() {
