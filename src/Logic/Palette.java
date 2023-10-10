@@ -1,3 +1,5 @@
+package Logic;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,7 +8,7 @@ public class Palette {
     int[][] colourPalette = new int[255][4];
     ArrayList<int[]> colourTargets = new ArrayList<>();
 
-    private void printPalette() {
+    public void printPalette() {
         for (int row = 0; row < colourPalette.length - 1; row++) {
             for (int col = 0; col < colourPalette[row].length; col++) {
                 System.out.print(" | " + colourPalette[row][col] + " | ");
@@ -14,11 +16,11 @@ public class Palette {
             System.out.println();
         }
     }
-    private void addColourTarget(int temp, int a, int r, int g, int b) {
+    public void addColourTarget(int temp, int a, int r, int g, int b) {
         int[] colourTarget = {temp, a, r, g, b};
         colourTargets.add(colourTarget);
     }
-    private void sortColourTargets() {
+    public void sortColourTargets() {
         int[] tempOrder = new int[colourTargets.size()];
 
         for (int i = 0; i < colourTargets.size(); i++) {
@@ -35,7 +37,7 @@ public class Palette {
             }
         }
     }
-    private void printColourTargets() {
+    public void printColourTargets() {
         for (int[] array : colourTargets) {
             System.out.print("[");
             for (int i = 0; i < array.length; i++) {
@@ -62,27 +64,11 @@ public class Palette {
         }
     }
 
-    private void calc() {
-        for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
+    public void calc() {
+        for (int colourTarget = 0; colourTarget < colourTargets.size() - 1; colourTarget++) {
             for (int channelPos = 0; channelPos < 4; channelPos++) {
                 calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget + 1), channelPos);
             }
         }
-    }
-
-
-    public static void main (String[]args){
-        Palette palette = new Palette();
-
-        palette.addColourTarget(255, 255, 255, 255, 255); // Spark
-        palette.addColourTarget(150, 255, 242, 125, 12); // ORANGE
-        palette.addColourTarget(200, 255, 253, 207, 88); // YELLOW
-        palette.addColourTarget(0, 0, 0, 0, 0);      // Transparency
-        palette.addColourTarget(75, 255, 128, 9, 9);  // RED
-        palette.sortColourTargets();
-        //palette.printColourTargets();
-        palette.calc();
-        palette.printPalette();
-
     }
 }

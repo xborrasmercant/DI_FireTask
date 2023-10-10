@@ -1,3 +1,4 @@
+package Logic;
 
 public class Temperature {
     int width;
@@ -23,8 +24,6 @@ public class Temperature {
             }
         }
     }
-
-
     private void sparks() {
         double randPercentage;
         for (int col = 0; col < width; col++) {
@@ -34,7 +33,6 @@ public class Temperature {
             }
         }
     }
-
     private void calc() {
         int avgTemp;
         for (int row = width-1; row >= 0; row--) {
@@ -56,8 +54,7 @@ public class Temperature {
         }
         this.printTemps();
     }
-
-    private void printTemps(){
+    public void printTemps(){
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (temps[i][j] != 0) {
@@ -74,21 +71,10 @@ public class Temperature {
         System.out.println();
         System.out.println();
     }
-
-
     public void next(){
         this.cold();
         this.sparks();
         this.calc();
     }
 
-
-    public static void main(String[] args) {
-        Temperature tempsMap = new Temperature(20,20,0.3, 0.3);
-
-        while (true) {
-            tempsMap.next();
-        }
-
-    }
 }
