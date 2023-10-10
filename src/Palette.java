@@ -14,12 +14,10 @@ public class Palette {
             System.out.println();
         }
     }
-
     private void addColourTarget(int temp, int a, int r, int g, int b) {
         int[] colourTarget = {temp, a, r, g, b};
         colourTargets.add(colourTarget);
     }
-
     private void sortColourTargets() {
         int[] tempOrder = new int[colourTargets.size()];
 
@@ -36,45 +34,7 @@ public class Palette {
                 }
             }
         }
-
-    /*
-    System.out.println("============TEMP ORDER===========");
-    for (int i = 0; i < tempOrder.length; i++) {
-        System.out.print(tempOrder[i] + " ");
     }
-    System.out.println();
-    System.out.println("=================================");
-    System.out.println();
-    */
-
-    }
-
-    private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
-        int A, B, C, step, NSteps, increment;
-        A = colourTarget1[channelPos+1];
-        B = colourTarget2[channelPos+1];
-        step = 1;
-        NSteps = colourTarget2[0] - colourTarget1[0];
-        increment = B / NSteps;
-
-        System.out.println("CHANNEL" + channelPos);
-        for (int paletteColour = colourTarget1[0]; paletteColour < colourTarget2[0]; paletteColour++) {
-            C = A + step * increment;
-            System.out.println(C);
-        colourPalette[paletteColour][channelPos] = C;
-            step++;
-        }
-
-    }
-
-    private void calc() {
-        for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
-            for (int channelPos = 0; channelPos < 4; channelPos++) {
-                calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget + 1), channelPos);
-            }
-        }
-    }
-
     private void printColourTargets() {
         for (int[] array : colourTargets) {
             System.out.print("[");
@@ -87,10 +47,32 @@ public class Palette {
             System.out.println("]");
         }
     }
+    private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
+        int A, B, C, step, NSteps, increment;
+        A = colourTarget1[channelPos+1];
+        B = colourTarget2[channelPos+1];
+        step = 0;
+        NSteps = colourTarget2[0] - colourTarget1[0];
+        increment = (B - A) / NSteps;
+
+        for (int paletteColour = colourTarget1[0]; paletteColour < colourTarget2[0]; paletteColour++) {
+            C = A + step * increment;
+            colourPalette[paletteColour][channelPos] = C;
+            step++;
+        }
+    }
+
+    private void calc() {
+        for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
+            for (int channelPos = 0; channelPos < 4; channelPos++) {
+                calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget + 1), channelPos);
+            }
+        }
+    }
+
 
     public static void main (String[]args){
         Palette palette = new Palette();
-
 
         palette.addColourTarget(255, 255, 255, 255, 255); // Spark
         palette.addColourTarget(150, 255, 242, 125, 12); // ORANGE
@@ -98,14 +80,9 @@ public class Palette {
         palette.addColourTarget(0, 0, 0, 0, 0);      // Transparency
         palette.addColourTarget(75, 255, 128, 9, 9);  // RED
         palette.sortColourTargets();
-        palette.printColourTargets();
-
+        //palette.printColourTargets();
         palette.calc();
-
         palette.printPalette();
 
     }
 }
-
-
-
