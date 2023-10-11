@@ -2,24 +2,17 @@ package GUI;
 
 import Logic.Palette;
 import Logic.Temperature;
-
 import javax.swing.*;
 import java.awt.event.*;
 
 public class FireTask extends JFrame {
 
     public FireTask (int width, int height) {
-        Viewer background = new Viewer(650,650);
-
+        Viewer background = new Viewer();
         add(background);
         setSize(width, height);
         configureFrame();
         setVisible(true);
-
-        background.createBufferStrategy(2);
-        background.paintBackground();
-
-
     }
 
     private void configureFrame() {
@@ -31,7 +24,7 @@ public class FireTask extends JFrame {
     public static void main(String[] args) {
         Palette palette = new Palette();
         Temperature tempsMap = new Temperature(5,5,0.3, 0.3);
-        FireTask mainWindow = new FireTask(1000, 750);
+        FireTask mainWindow = new FireTask(650, 650);
 
 
 
@@ -52,7 +45,7 @@ public class FireTask extends JFrame {
         palette.sortColourTargets();
         //palette.printColourTargets();
         palette.calc();
-        //palette.printPalette();
+        palette.printPalette();
 
         //while (true) {
         //    tempsMap.next();
