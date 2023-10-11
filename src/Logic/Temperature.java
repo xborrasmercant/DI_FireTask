@@ -1,5 +1,7 @@
 package Logic;
 
+import GUI.FireAnimation;
+
 public class Temperature {
     int width;
     int height;

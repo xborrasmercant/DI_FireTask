@@ -8,7 +8,8 @@ import java.awt.event.*;
 public class FireTask extends JFrame {
 
     public FireTask (int width, int height) {
-        Viewer background = new Viewer();
+        FireAnimation foregroundImg = new FireAnimation(290, 95, 300, 200);
+        Viewer background = new Viewer(foregroundImg);
         add(background);
         setSize(width, height);
         configureFrame();
