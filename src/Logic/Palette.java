@@ -6,10 +6,9 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Palette {
-    Color[] colourPalette = new Color[256];
-    int[][] matrixPalette = new int[256][4];
-
-    ArrayList<int[]> colourTargets = new ArrayList<>();
+    public Color[] colourPalette = new Color[256];
+    public int[][] matrixPalette = new int[256][4];
+    public ArrayList<int[]> colourTargets = new ArrayList<>();
 
     public void printPalette() {
         for (int row = 0; row < matrixPalette.length; row++) {

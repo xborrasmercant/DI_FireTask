@@ -7,7 +7,7 @@ public class Temperature {
     int height;
     double percentageColdPoints;
     double percentageSparks;
-    int[][] temps;
+    public int[][] temps;
 
     public Temperature(int width, int height, double percentageColdPoints, double percentageSparks) {
         this.width = width;
