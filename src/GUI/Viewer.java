@@ -22,9 +22,11 @@ public class Viewer extends Canvas {
     @Override
     public void paint(Graphics g) {
         System.out.println("Overrided paint()");
-        this.paintBackground();
-        paintForeground(0, 0, 0);
+        //this.paintBackground();
+        this.paintForeground();
     }
+
+
 
     private void loadBackground() {
         try {
@@ -54,7 +56,7 @@ public class Viewer extends Canvas {
         g.dispose();
     }
 
-    public void paintForeground(int x, int y, int actualTemp){
+    public void paintForeground(){
 
         // To use only the bufferStrategy when needed an if statement check if the canvas' bs is already null, in that case, a new bufferStrategy(2) is created.
         if (bs == null) {
@@ -66,8 +68,9 @@ public class Viewer extends Canvas {
         // We get the Graphics manager from the bufferStrategy and use it to draw the background image.
         Graphics g = bs.getDrawGraphics();
 
-        g.drawImage(this.foregroundImg, 260, 380, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
-        this.foregroundImg.createFireImage(x, y, actualTemp);
+        //g.drawRect(300, 200, 250, 95);
+        g.drawImage(this.foregroundImg, 50, 50, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
+        this.foregroundImg.next();
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.
         g.dispose();
