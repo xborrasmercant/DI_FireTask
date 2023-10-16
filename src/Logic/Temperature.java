@@ -3,11 +3,11 @@ package Logic;
 import GUI.FireAnimation;
 
 public class Temperature {
-    int width;
-    int height;
+    public int width;
+    public int height;
     double percentageColdPoints;
     double percentageSparks;
-    int[][] temps;
+    public int[][] temps;
 
     public Temperature(int width, int height, double percentageColdPoints, double percentageSparks) {
         this.width = width;

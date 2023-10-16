@@ -6,10 +6,16 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Palette {
-    Color[] colourPalette = new Color[256];
+    public Color[] colourPalette = new Color[256];
     int[][] matrixPalette = new int[256][4];
-
     ArrayList<int[]> colourTargets = new ArrayList<>();
+
+
+    public Palette () {
+        this.createColorTargets();
+        this.sortColourTargets();
+        this.calc();
+    }
 
     public void printPalette() {
         for (int row = 0; row < matrixPalette.length; row++) {
@@ -67,6 +73,16 @@ public class Palette {
 
             colourPalette[x] = new Color (R, G, B, A);
         }
+    }
+
+    public void createColorTargets() {
+
+        this.addColourTarget(255, 255, 255, 255, 255); // Spark
+        this.addColourTarget(150, 200, 242, 125, 12); // ORANGE
+        this.addColourTarget(200, 255, 253, 207, 88); // YELLOW
+        this.addColourTarget(0, 0, 0, 0, 0);      // Transparency
+        this.addColourTarget(75, 150, 128, 9, 9);  // RED
+        this.addColourTarget(25, 75, 99, 105, 105);  // Grey
     }
 
 
