@@ -1,22 +1,18 @@
 package Logic;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Palette {
-    public Color[] colourPalette = new Color[256];
-    public int[][] matrixPalette = new int[256][4];
-    public ArrayList<int[]> colourTargets = new ArrayList<>();
+    int[][] colourPalette = new int[255][4];
+    ArrayList<int[]> colourTargets = new ArrayList<>();
 
     public void printPalette() {
-        for (int row = 0; row < matrixPalette.length; row++) {
-            for (int col = 0; col < matrixPalette[row].length; col++) {
-                System.out.print(" | " + matrixPalette[row][col] + " | ");
+        for (int row = 0; row < colourPalette.length - 1; row++) {
+            for (int col = 0; col < colourPalette[row].length; col++) {
+                System.out.print(" | " + colourPalette[row][col] + " | ");
             }
-            System.out.println();
-            System.out.println(row);
             System.out.println();
         }
     }
@@ -53,35 +49,17 @@ public class Palette {
             System.out.println("]");
         }
     }
-
-
-    private void intToColor(int[][] matrixPalette, Color[] colourPalette) {
-    int R = 0, G = 0, B = 0, A = 0;
-
-        for (int x = 0; x < matrixPalette.length; x++) {
-            A = matrixPalette[x][0];
-            R = matrixPalette[x][1];
-            G = matrixPalette[x][2];
-            B = matrixPalette[x][3];
-
-            colourPalette[x] = new Color (R, G, B, A);
-        }
-    }
-
-
     private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
         int A, B, C, step, NSteps, increment;
         A = colourTarget1[channelPos+1];
         B = colourTarget2[channelPos+1];
         step = 0;
         NSteps = colourTarget2[0] - colourTarget1[0];
-
+        increment = (B - A) / NSteps;
 
         for (int paletteColour = colourTarget1[0]; paletteColour < colourTarget2[0]; paletteColour++) {
-            increment = (B - A) / NSteps;
-
             C = A + step * increment;
-            matrixPalette[paletteColour][channelPos] = C;
+            colourPalette[paletteColour][channelPos] = C;
             step++;
         }
     }
@@ -92,7 +70,5 @@ public class Palette {
                 calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget + 1), channelPos);
             }
         }
-
-        this.intToColor(this.matrixPalette, this.colourPalette); // The palette is converted from int to color.
     }
 }

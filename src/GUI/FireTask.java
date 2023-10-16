@@ -4,13 +4,15 @@ import Logic.Palette;
 import Logic.Temperature;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.event.ActionListener;
 
 public class FireTask extends JFrame {
+    Viewer viewer;
+    FireAnimation foregroundImg = new FireAnimation(290, 120, 50, 50);
 
     public FireTask (int width, int height) {
-        FireAnimation foregroundImg = new FireAnimation(290, 95, 300, 200);
-        Viewer background = new Viewer(foregroundImg);
-        add(background);
+        viewer = new Viewer(foregroundImg);
+        add(viewer);
         setSize(width, height);
         configureFrame();
         setVisible(true);
@@ -22,12 +24,20 @@ public class FireTask extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Closing the window stops the program.
     }
 
+    public void playAnimation() {
+        for (int y = foregroundImg.height-1 ; y < foregroundImg.height; y--) {
+            for (int x = 0; x < foregroundImg.width; x++) {
+                viewer.paintForeground(x, y);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Palette palette = new Palette();
-        Temperature tempsMap = new Temperature(5,5,0.3, 0.3);
+        Temperature tempsMap = new Temperature(15,15,0.3, 0.3);
         FireTask mainWindow = new FireTask(650, 650);
 
-
+        mainWindow.playAnimation();
 
 
 
@@ -45,8 +55,8 @@ public class FireTask extends JFrame {
         palette.addColourTarget(75, 255, 128, 9, 9);  // RED
         palette.sortColourTargets();
         //palette.printColourTargets();
-        palette.calc();
-        palette.printPalette();
+        //palette.calc();
+        //palette.printPalette();
 
         //while (true) {
         //    tempsMap.next();
