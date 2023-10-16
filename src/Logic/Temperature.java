@@ -37,19 +37,19 @@ public class Temperature {
     }
     private void calc() {
         int avgTemp;
-        for (int row = width-1; row >= 0; row--) {
+        for (int row = width-2; row > 0; row--) {
             for (int col = 0; col < height; col++) {
                 if (row != 0) {
                     if (col == 0) {
-                        avgTemp = (temps[row][col] + temps[row][col+1] + temps[row-1][col]) / 3;
+                        avgTemp = (temps[row][col] + temps[row][col+1] + temps[row+1][col] + temps[row+1][col+1]) / 4;
                     }
-                    else if ((col == height-1)) {
-                        avgTemp = (temps[row][col] + temps[row][col-1] + temps[row-1][col]) / 3;
+                    else if (col == height-1) {
+                        avgTemp = (temps[row][col] + temps[row][col-1] + temps[row-1][col] + temps[row+1][col-1]) / 4;
                     }
                     else {
-                        avgTemp = (temps[row][col-1] + temps[row][col] + temps[row][col+1] + temps[row-1][col]) / 4;
+                        avgTemp = (temps[row][col-1] + temps[row][col] + temps[row][col+1] + temps[row+1][col-1] + temps[row+1][col] + temps[row+1][col+1]) / 6;
                     }
-                    temps[row-1][col] = avgTemp;
+                    temps[row][col] = avgTemp;
 
                 }
             }
