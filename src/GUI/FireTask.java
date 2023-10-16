@@ -35,7 +35,7 @@ public class FireTask extends JFrame {
     public static void main(String[] args) {
         Palette palette = new Palette();
         Temperature tempsMap = new Temperature(10,10,0.3, 0.3);
-        //FireTask mainWindow = new FireTask(650, 650);
+        FireTask mainWindow = new FireTask(650, 650);
 
 
 
@@ -51,7 +51,7 @@ public class FireTask extends JFrame {
         palette.printPalette();
 
 
-        //mainWindow.playAnimation();
+        mainWindow.playAnimation();
 
 
 
