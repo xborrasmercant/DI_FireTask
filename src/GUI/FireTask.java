@@ -40,12 +40,13 @@ public class FireTask extends JFrame {
 
 
         palette.addColourTarget(255, 255, 255, 255, 255); // Spark
-        palette.addColourTarget(150, 255, 242, 125, 12); // ORANGE
+        palette.addColourTarget(150, 200, 242, 125, 12); // ORANGE
         palette.addColourTarget(200, 255, 253, 207, 88); // YELLOW
         palette.addColourTarget(0, 0, 0, 0, 0);      // Transparency
-        palette.addColourTarget(75, 255, 128, 9, 9);  // RED
+        palette.addColourTarget(75, 150, 128, 9, 9);  // RED
+        palette.addColourTarget(25, 75, 99, 105, 105);  // Grey
         palette.sortColourTargets();
-        //palette.printColourTargets();
+        palette.printColourTargets();
         palette.calc();
         palette.printPalette();
 
@@ -54,9 +55,9 @@ public class FireTask extends JFrame {
 
 
 
-        while (true) {
-            tempsMap.next();
-        }
+        //while (true) {
+        //    tempsMap.next();
+        //}
     }
 
 }
