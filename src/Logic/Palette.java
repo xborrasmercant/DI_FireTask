@@ -84,18 +84,14 @@ public class Palette {
             matrixPalette[paletteColour][channelPos] = C;
             step++;
         }
-
-
     }
 
     public void calc() {
-        for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
+        for (int colourTarget = 0; colourTarget < colourTargets.size() - 1; colourTarget++) {
             for (int channelPos = 0; channelPos < 4; channelPos++) {
-                calcChannel(colourTargets.get(colourTarget), colourTargets.get((colourTarget+1)), channelPos);
+                calcChannel(colourTargets.get(colourTarget), colourTargets.get(colourTarget + 1), channelPos);
             }
         }
-
-        matrixPalette[255] = new int[]{255, 255, 255, 255}; // The last position is added manually to prevent index out of bounds.
 
         this.intToColor(this.matrixPalette, this.colourPalette); // The palette is converted from int to color.
     }
