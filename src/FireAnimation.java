@@ -8,7 +8,7 @@ public class FireAnimation extends BufferedImage {
     Palette pal;
 
     public FireAnimation(int fireWidth, int fireHeight, int posX, int posY) {
-        super(fireWidth, fireHeight, BufferedImage.TYPE_INT_RGB);
+        super(fireWidth, fireHeight, BufferedImage.TYPE_INT_ARGB);
         temps = new Temperature(fireWidth, fireHeight,0.1, 0.1);
         pal = new Palette();
 

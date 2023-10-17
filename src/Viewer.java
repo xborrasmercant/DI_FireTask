@@ -13,7 +13,7 @@ public class Viewer extends Canvas {
     public Viewer() {
         loadBackground();
         this.setSize(backgroundImg.getWidth(), backgroundImg.getHeight());
-        this.foregroundImg = new FireAnimation(290, 110, 50, 50);
+        this.foregroundImg = new FireAnimation(265, 110, 50, 50);
         this.bs = null;
     }
 
@@ -62,7 +62,7 @@ public class Viewer extends Canvas {
         // We get the Graphics manager from the bufferStrategy and use it to draw the background image.
         Graphics g = bs.getDrawGraphics();
 
-        g.drawImage(this.foregroundImg, 260, 365, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
+        g.drawImage(this.foregroundImg, 273, 380, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
         this.foregroundImg.next();
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.
