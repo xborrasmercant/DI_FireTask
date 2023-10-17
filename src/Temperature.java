@@ -1,20 +1,16 @@
-package Logic;
-
-import GUI.FireAnimation;
-
 public class Temperature {
     int width;
     int height;
     double percentageColdPoints;
     double percentageSparks;
-    int[][] temps;
+    int[][] tempMap;
 
     public Temperature(int width, int height, double percentageColdPoints, double percentageSparks) {
         this.width = width;
         this.height = height;
         this.percentageColdPoints = percentageColdPoints;
         this.percentageSparks = percentageSparks;
-        this.temps = new int[height][width];
+        this.tempMap = new int[width][height];
     }
 
     private void cold() {
@@ -22,47 +18,48 @@ public class Temperature {
         for (int col = 0; col < width; col++) {
             randPercentage = Math.random();
             if (randPercentage <= percentageColdPoints) {
-                temps[height - 1][col] = 0;
+                tempMap[col][height - 1] = 0;
             }
         }
     }
+
     private void sparks() {
         double randPercentage;
         for (int col = 0; col < width; col++) {
             randPercentage = Math.random();
             if (randPercentage <= percentageSparks) {
-                temps[height - 1][col] = 255;
+                tempMap[col][height - 1] = 255;
             }
         }
     }
+
     private void calc() {
         int avgTemp;
         for (int row = width-2; row > 0; row--) {
             for (int col = 0; col < height; col++) {
                 if (row != 0) {
                     if (col == 0) {
-                        avgTemp = (temps[row][col] + temps[row][col+1] + temps[row+1][col] + temps[row+1][col+1]) / 4;
+                        avgTemp = (tempMap[row][col] + tempMap[row][col+1] + tempMap[row+1][col] + tempMap[row+1][col+1]) / 4;
                     }
                     else if (col == height-1) {
-                        avgTemp = (temps[row][col] + temps[row][col-1] + temps[row-1][col] + temps[row+1][col-1]) / 4;
+                        avgTemp = (tempMap[row][col] + tempMap[row][col-1] + tempMap[row-1][col] + tempMap[row+1][col-1]) / 4;
                     }
                     else {
-                        avgTemp = (temps[row][col-1] + temps[row][col] + temps[row][col+1] + temps[row+1][col-1] + temps[row+1][col] + temps[row+1][col+1]) / 6;
+                        avgTemp = (tempMap[row][col-1] + tempMap[row][col] + tempMap[row][col+1] + tempMap[row+1][col-1] + tempMap[row+1][col] + tempMap[row+1][col+1]) / 6;
                     }
-                    temps[row][col] = avgTemp;
+                    tempMap[row][col] = avgTemp;
 
                 }
             }
         }
-        this.printTemps();
     }
     public void printTemps(){
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (temps[i][j] != 0) {
-                    System.out.print(" " + temps[i][j] + " ");
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (tempMap[x][y] != 0) {
+                    System.out.print(" " + tempMap[x][y] + " ");
                 } else {
-                    System.out.print("  " + temps[i][j] + "  ");
+                    System.out.print("  " + tempMap[x][y] + "  ");
                 }
             }
             System.out.println();
