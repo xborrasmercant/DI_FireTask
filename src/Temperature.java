@@ -1,3 +1,4 @@
+
 public class Temperature {
     int width;
     int height;
@@ -22,7 +23,6 @@ public class Temperature {
             }
         }
     }
-
     private void sparks() {
         double randPercentage;
         for (int col = 0; col < width; col++) {
@@ -32,7 +32,6 @@ public class Temperature {
             }
         }
     }
-
     private void calc() {
         int avgTemp;
         for (int row = width-2; row > 0; row--) {
@@ -53,13 +52,15 @@ public class Temperature {
             }
         }
     }
+
+
     public void printTemps(){
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (tempMap[x][y] != 0) {
-                    System.out.print(" " + tempMap[x][y] + " ");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (tempMap[i][j] != 0) {
+                    System.out.print(" " + tempMap[i][j] + " ");
                 } else {
-                    System.out.print("  " + tempMap[x][y] + "  ");
+                    System.out.print("  " + tempMap[i][j] + "  ");
                 }
             }
             System.out.println();
