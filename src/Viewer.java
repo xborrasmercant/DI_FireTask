@@ -87,7 +87,7 @@ public class Viewer extends Canvas {
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.
         g.dispose();
-
+//
     }*/
 
 }

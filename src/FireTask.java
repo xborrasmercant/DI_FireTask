@@ -5,9 +5,11 @@ import static java.lang.Thread.sleep;
 
 public class FireTask extends JFrame {
     Viewer viewer;
-    FireAnimation foregroundImg = new FireAnimation(290, 120);
+    FireAnimation foregroundImg;
+
 
     public FireTask (int width, int height) {
+        foregroundImg = new FireAnimation(290, 120);
         viewer = new Viewer(foregroundImg);
         add(viewer);
         setSize(width, height);
@@ -27,7 +29,7 @@ public class FireTask extends JFrame {
                 this.viewer.paintElements();
 
             try {
-                sleep(100);
+                sleep(20);
             } catch (InterruptedException ex) {
                 System.err.println(ex);
             }

@@ -11,18 +11,16 @@ public class Palette {
 
     public Palette() {
         this.addColourTarget(255, 255, 255, 255, 255); // Spark
-        this.addColourTarget(150, 200, 242, 125, 12); // ORANGE
-        this.addColourTarget(200, 255, 253, 207, 88); // YELLOW
+        this.addColourTarget(200, 180, 242, 125, 12); // ORANGE
+        this.addColourTarget(220, 200, 253, 207, 88); // YELLOW
         this.addColourTarget(0, 0, 0, 0, 0);      // Transparency
-        this.addColourTarget(75, 150, 128, 9, 9);  // RED
-        this.addColourTarget(25, 75, 99, 105, 105);  // Grey
+        this.addColourTarget(180, 100, 128, 9, 9);  // RED
+        this.addColourTarget(150, 10, 99, 105, 105);  // Grey
         this.sortColourTargets();
         this.printColourTargets();
         this.calc();
         this.printPalette();
-
     }
-
 
     public void printPalette() {
         for (int row = 0; row < matrixPalette.length; row++) {
@@ -45,7 +43,6 @@ public class Palette {
             tempOrder[i] = (colourTargets.get(i)[0]);
         }
         Arrays.sort(tempOrder);
-
 
         for (int sortedPos = 0; sortedPos < tempOrder.length; sortedPos++) {
             for (int unsortedPos = 0; unsortedPos < colourTargets.size(); unsortedPos++) {
@@ -70,7 +67,7 @@ public class Palette {
 
 
     private void intToColor(int[][] matrixPalette, Color[] colourPalette) {
-    int R = 0, G = 0, B = 0, A = 0;
+    int R, G, B, A;
 
         for (int x = 0; x < matrixPalette.length; x++) {
             A = matrixPalette[x][0];
@@ -79,6 +76,8 @@ public class Palette {
             B = matrixPalette[x][3];
 
             colourPalette[x] = new Color (R, G, B, A);
+
+            System.out.println(new Color(R,G,B,A)); // Check if colours are being converted.
         }
     }
 
