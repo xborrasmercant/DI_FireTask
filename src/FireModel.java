@@ -3,7 +3,6 @@ import java.awt.*;
 
 
 public class FireModel extends BufferedImage {
-    int width, height;
     Temperature temps;
     Palette pal;
 

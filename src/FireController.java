@@ -1,32 +1,22 @@
 
-import javax.swing.*;
 
 import static java.lang.Thread.sleep;
 
-public class FireController extends JFrame {
-    Viewer viewer;
+public class FireController {
     FireModel foregroundImg;
+    FireView FView;
 
 
-    public FireController (int width, int height) {
+    public FireController () {
         foregroundImg = new FireModel(290, 120);
-        viewer = new Viewer(foregroundImg);
-        add(viewer);
-        setSize(width, height);
-        configureFrame();
-        setResizable(false);
-        setVisible(true);
-    }
+        FView = new FireView();
 
-    private void configureFrame() {
-        setTitle("Randomized Fire");
-        setLocationRelativeTo(null); // Window will appear at the center of the screen.
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Closing the window stops the program.
+        FView.loadForeground(foregroundImg);
     }
 
     public void playAnimation() {
         while (true) {
-                this.viewer.paintElements();
+            FView.v.paintElements();
 
             try {
                 sleep(20);
@@ -37,7 +27,7 @@ public class FireController extends JFrame {
     }
 
     public static void main(String[] args) {
-        FireController mainWindow = new FireController(650, 650);
+        FireController mainWindow = new FireController();
         mainWindow.playAnimation();
     }
 }
