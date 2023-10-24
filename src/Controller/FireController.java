@@ -1,17 +1,19 @@
+package Controller;
 
+import View.*;
+import Model.*;
 
 import static java.lang.Thread.sleep;
 
 public class FireController {
-    FireModel foregroundImg;
-    FireView FView;
+    protected FireModel foregroundImg;
+    protected FireView FView;
 
 
     public FireController () {
         foregroundImg = new FireModel(290, 120);
-        FView = new FireView();
+        FView = new FireView(foregroundImg);
 
-        FView.loadForeground(foregroundImg);
     }
 
     public void playAnimation() {

@@ -1,3 +1,7 @@
+package View;
+
+import Model.*;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -6,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class Viewer extends Canvas {
-    BufferedImage backgroundImg;
-    FireModel foregroundImg;
-    BufferStrategy bs;
+    protected BufferedImage backgroundImg;
+    protected FireModel foregroundImg;
+    protected BufferStrategy bs;
 
     public Viewer(FireModel foregroundImg) {
         this.loadBackground();
@@ -25,7 +29,7 @@ public class Viewer extends Canvas {
 
     private void loadBackground() {
         try {
-            backgroundImg = ImageIO.read(new File("src/bg.jpg"));
+            backgroundImg = ImageIO.read(new File("src/Resources/bg.jpg"));
             System.out.println("The background image has been loaded successfully.");
         }
         catch (IOException e) {
