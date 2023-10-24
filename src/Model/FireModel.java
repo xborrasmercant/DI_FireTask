@@ -1,10 +1,12 @@
+package Model;
+
 import java.awt.image.BufferedImage;
 import java.awt.*;
 
 
 public class FireModel extends BufferedImage {
-    Temperature temps;
-    Palette pal;
+    public Temperature temps;
+    public Palette pal;
 
     public FireModel(int width, int height) {
         super(width, height, BufferedImage.TYPE_INT_ARGB);

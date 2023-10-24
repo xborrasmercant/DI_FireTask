@@ -1,13 +1,15 @@
+package Model;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Palette {
-    Color[] colourPalette = new Color[256];
-    int[][] matrixPalette = new int[256][4];
+    protected Color[] colourPalette = new Color[256];
+    protected int[][] matrixPalette = new int[256][4];
 
-    ArrayList<int[]> colourTargets = new ArrayList<>();
+    protected ArrayList<int[]> colourTargets = new ArrayList<>();
 
     public Palette() {
         this.addColourTarget(255, 255, 255, 255, 255); // Spark

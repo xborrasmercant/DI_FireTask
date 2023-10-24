@@ -1,11 +1,13 @@
+package Model;
+
 import java.awt.*;
 
     public class Temperature {
-        int width;
-        int height;
-        double percentageColdPoints;
-        double percentageSparks;
-        int[][] tempMap;
+        protected int width;
+        protected int height;
+        protected double percentageColdPoints;
+        protected double percentageSparks;
+        protected int[][] tempMap;
 
         public Temperature(int width, int height, double percentageColdPoints, double percentageSparks) {
             this.width = width;
