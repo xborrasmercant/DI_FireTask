@@ -7,10 +7,10 @@ import java.io.IOException;
 
 public class Viewer extends Canvas {
     BufferedImage backgroundImg;
-    FireAnimation foregroundImg;
+    FireModel foregroundImg;
     BufferStrategy bs;
 
-    public Viewer(FireAnimation foregroundImg) {
+    public Viewer(FireModel foregroundImg) {
         this.loadBackground();
         this.setSize(backgroundImg.getWidth(), backgroundImg.getHeight());
         this.foregroundImg = foregroundImg;

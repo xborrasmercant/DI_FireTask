@@ -3,13 +3,13 @@ import javax.swing.*;
 
 import static java.lang.Thread.sleep;
 
-public class FireTask extends JFrame {
+public class FireController extends JFrame {
     Viewer viewer;
-    FireAnimation foregroundImg;
+    FireModel foregroundImg;
 
 
-    public FireTask (int width, int height) {
-        foregroundImg = new FireAnimation(290, 120);
+    public FireController (int width, int height) {
+        foregroundImg = new FireModel(290, 120);
         viewer = new Viewer(foregroundImg);
         add(viewer);
         setSize(width, height);
@@ -37,7 +37,7 @@ public class FireTask extends JFrame {
     }
 
     public static void main(String[] args) {
-        FireTask mainWindow = new FireTask(650, 650);
+        FireController mainWindow = new FireController(650, 650);
         mainWindow.playAnimation();
     }
 }

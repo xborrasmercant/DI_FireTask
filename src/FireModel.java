@@ -2,12 +2,12 @@ import java.awt.image.BufferedImage;
 import java.awt.*;
 
 
-public class FireAnimation extends BufferedImage {
+public class FireModel extends BufferedImage {
     int width, height;
     Temperature temps;
     Palette pal;
 
-    public FireAnimation(int width, int height) {
+    public FireModel(int width, int height) {
         super(width, height, BufferedImage.TYPE_INT_ARGB);
         temps = new Temperature(width, height,0.2, 0.5);
         pal = new Palette();
