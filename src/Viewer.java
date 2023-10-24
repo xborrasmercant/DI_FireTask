@@ -7,10 +7,10 @@ import java.io.IOException;
 
 public class Viewer extends Canvas {
     BufferedImage backgroundImg;
-    FireAnimation foregroundImg;
+    FireModel foregroundImg;
     BufferStrategy bs;
 
-    public Viewer(FireAnimation foregroundImg) {
+    public Viewer(FireModel foregroundImg) {
         this.loadBackground();
         this.setSize(backgroundImg.getWidth(), backgroundImg.getHeight());
         this.foregroundImg = foregroundImg;
@@ -45,7 +45,7 @@ public class Viewer extends Canvas {
         // We get the Graphics manager from the bufferStrategy and use it to draw the background image.
         Graphics g = bs.getDrawGraphics();
         g.drawImage(this.backgroundImg, 0, 0, this.getWidth(), this.getHeight(), null);
-        g.drawImage(this.foregroundImg, 260, 380, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
+        g.drawImage(this.foregroundImg, 270, 410, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
         this.foregroundImg.next();
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.
