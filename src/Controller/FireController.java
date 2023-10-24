@@ -18,7 +18,13 @@ public class FireController {
 
     public void playAnimation() {
         while (true) {
-            FView.v.paintElements();
+            if (FView.controlPanel.controls.resume == true) {
+                FView.v.paintElements();
+                // Animation is resumed
+
+            } else if (FView.controlPanel.controls.resume == false) {
+                // Animation is stopped
+            }
 
             try {
                 sleep(20);

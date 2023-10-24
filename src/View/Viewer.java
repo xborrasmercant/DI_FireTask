@@ -48,7 +48,7 @@ public class Viewer extends Canvas {
 
         // We get the Graphics manager from the bufferStrategy and use it to draw the background image.
         Graphics g = bs.getDrawGraphics();
-        g.drawImage(this.backgroundImg, 0, 0, this.getWidth(), this.getHeight(), null);
+        g.drawImage(this.backgroundImg, 0, 0, backgroundImg.getWidth(), backgroundImg.getHeight(), null);
         g.drawImage(this.foregroundImg, 270, 410, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
         this.foregroundImg.next();
 
