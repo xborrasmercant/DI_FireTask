@@ -23,9 +23,9 @@ public class FireView extends JFrame {
     private void addViewerToPane(Container panel) {
         GridBagConstraints c = new GridBagConstraints();
 
-        c.anchor = GridBagConstraints.WEST;
+        c.anchor = GridBagConstraints.EAST;
         c.fill = GridBagConstraints.VERTICAL;
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 0;
 
         v = new Viewer(foregroundImg);
@@ -37,7 +37,7 @@ public class FireView extends JFrame {
 
         c.anchor = GridBagConstraints.WEST;
         c.fill = GridBagConstraints.BOTH;
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy = 0;
 
         controlPanel = new ControlPanel();
@@ -57,6 +57,6 @@ public class FireView extends JFrame {
         setTitle("Randomized Fire");
         setLocationRelativeTo(null); // Window will appear at the center of the screen.
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Closing the window stops the program.
-        setResizable(false);
+        //setResizable(false);
     }
 }
