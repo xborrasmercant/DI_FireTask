@@ -1,7 +1,6 @@
 package View;
 
 import Model.*;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -50,7 +49,6 @@ public class Viewer extends Canvas {
         Graphics g = bs.getDrawGraphics();
         g.drawImage(this.backgroundImg, 0, 0, backgroundImg.getWidth(), backgroundImg.getHeight(), null);
         g.drawImage(this.foregroundImg, (int) (this.getWidth()/2.45), (int) (this.getHeight()/1.95), (int) (this.getWidth()/2.15), (int) (this.getHeight()/3), null);
-//g.drawImage(this.foregroundImg, 270, 410, foregroundImg.getWidth(), foregroundImg.getHeight(), null);
         this.foregroundImg.next();
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.

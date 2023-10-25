@@ -9,7 +9,6 @@ public class FireController {
     protected FireModel foregroundImg;
     protected FireView FView;
 
-
     public FireController () {
         foregroundImg = new FireModel(290, 120);
         FView = new FireView(foregroundImg);
@@ -18,12 +17,9 @@ public class FireController {
 
     public void playAnimation() {
         while (true) {
-            if (FView.controlPanel.controls.resume == true) {
+            if (FView.getPlayButton().isSelected()) {
                 FView.v.paintElements();
-                // Animation is resumed
-
-            } else if (FView.controlPanel.controls.resume == false) {
-                // Animation is stopped
+                // Animation is played
             }
 
             try {

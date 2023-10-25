@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class FireView extends JFrame {
+public class FireView extends JFrame implements ActionListener {
     public Viewer v;
     public FireModel foregroundImg;
     public ControlPanel controlPanel;
@@ -49,6 +49,9 @@ public class FireView extends JFrame {
 
         addViewerToPane(panel);
         addControlsToPane(panel);
+
+        getPlayButton().addActionListener(this);
+        getStopButton().addActionListener(this);
     }
 
     private void configureFrame(int width, int height) {
@@ -58,5 +61,33 @@ public class FireView extends JFrame {
         setLocationRelativeTo(null); // Window will appear at the center of the screen.
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Closing the window stops the program.
         //setResizable(false);
+    }
+
+    public JToggleButton getPlayButton() {
+        return controlPanel.controls.playPause;
+    }
+
+    public JButton getStopButton() {
+        return controlPanel.controls.stopButton;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String str = e.getActionCommand();
+        switch (str) {
+            case "Play":
+                System.out.println("Play");
+                break;
+            case "Stop":
+                System.out.println("Stop");
+                System.exit(0);
+
+                break;
+            case "Apply":
+                System.out.println("Apply");
+                break;
+            default:
+                System.err.println("Acción NO tratada: " + e);
+        }
     }
 }

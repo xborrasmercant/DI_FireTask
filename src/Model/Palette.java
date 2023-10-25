@@ -67,8 +67,6 @@ public class Palette {
             System.out.println("]");
         }
     }
-
-
     private void intToColor(int[][] matrixPalette, Color[] colourPalette) {
     int R, G, B, A;
 
@@ -83,8 +81,6 @@ public class Palette {
             System.out.println(new Color(R,G,B,A)); // Check if colours are being converted.
         }
     }
-
-
     private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
         int A, B, C, step, NSteps, increment;
         A = colourTarget1[channelPos+1];
@@ -103,7 +99,6 @@ public class Palette {
 
 
     }
-
     public void calc() {
         for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
             for (int channelPos = 0; channelPos < 4; channelPos++) {
