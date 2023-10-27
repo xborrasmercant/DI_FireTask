@@ -13,9 +13,9 @@ public class Palette {
 
     public Palette() {
         this.addColourTarget(255, 255, 255, 255, 255); // Spark
-        this.addColourTarget(220, 200, 253, 207, 88); // YELLOW
-        this.addColourTarget(200, 180, 242, 125, 12); // ORANGE
-        this.addColourTarget(180, 100, 128, 9, 9);  // RED
+        this.addColourTarget(220, 200, 255, 207, 88); // YELLOW
+        this.addColourTarget(200, 180, 255, 125, 12); // ORANGE
+        this.addColourTarget(180, 100, 255, 9, 9);  // RED
         this.addColourTarget(150, 30, 99, 105, 105);  // Grey
         this.addColourTarget(0, 0, 0, 0, 0); // Transparency
 
@@ -67,8 +67,6 @@ public class Palette {
             System.out.println("]");
         }
     }
-
-
     private void intToColor(int[][] matrixPalette, Color[] colourPalette) {
     int R, G, B, A;
 
@@ -83,8 +81,6 @@ public class Palette {
             System.out.println(new Color(R,G,B,A)); // Check if colours are being converted.
         }
     }
-
-
     private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
         int A, B, C, step, NSteps, increment;
         A = colourTarget1[channelPos+1];
@@ -103,7 +99,6 @@ public class Palette {
 
 
     }
-
     public void calc() {
         for (int colourTarget = 0; colourTarget < colourTargets.size()-1; colourTarget++) {
             for (int channelPos = 0; channelPos < 4; channelPos++) {

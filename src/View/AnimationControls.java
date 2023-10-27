@@ -1,55 +1,55 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class AnimationControls extends JPanel implements ActionListener {
-
-    public JButton playPause;
+public class AnimationControls extends JPanel {
+    public JToggleButton playPause;
     public JButton stopButton;
-    public boolean resume = false;
+    public JButton defaultButton;
+    public JButton applyButton;
 
     public AnimationControls(){
+        Border blackBorder = BorderFactory.createLineBorder(Color.black);
+        setBorder(blackBorder);
+
+        setLayout(new GridBagLayout());
         addButtonsToPane(this);
     }
 
     private void addButtonsToPane(Container panel) {
-        GridBagConstraints c = new GridBagConstraints();
+        // Animation control buttons are added to the panel.
 
-        c.anchor = GridBagConstraints.NORTH;
-        c.fill = GridBagConstraints.BOTH;
+        GridBagConstraints c = new GridBagConstraints();
+        int insetAmount = 3;
+
+        c.insets = new Insets(insetAmount, insetAmount, insetAmount, insetAmount);
+
+        // Default configuration for buttons
+        //c.anchor = GridBagConstraints.NORTH;
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        this.playPause = new JToggleButton("Play");
+        this.stopButton = new JButton("Stop");
+        this.defaultButton = new JButton("Default");
+        this.applyButton = new JButton("Apply");
+
+
         c.gridx = 0;
         c.gridy = 0;
-
-        this.playPause = new JButton("Play");
-        this.playPause.addActionListener(this);
         panel.add(this.playPause, c);
 
-        c.gridy = 1;
-        this.stopButton = new JButton("Stop");
-        this.stopButton.addActionListener(this);
+        c.gridx = 1;
         panel.add(this.stopButton, c);
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String str = e.getActionCommand();
-        switch (str) {
-            case "Play":
-                System.out.println("Play");
-                resume = true;
-                break;
-            case "Stop":
-                System.out.println("Stop");
-                resume = false;
-                break;
-            case "Apply":
-                System.out.println("Apply");
-                break;
-            default:
-                System.err.println("Acción NO tratada: " + e);
-        }
+        c.gridx = 2;
+        panel.add(this.defaultButton, c);
+
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 1;
+        panel.add(this.applyButton, c);
+
     }
 }
