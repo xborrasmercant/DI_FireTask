@@ -12,7 +12,6 @@ public class FireController {
     public FireController () {
         foregroundImg = new FireModel(290, 120);
         FView = new FireView(foregroundImg);
-
     }
 
     public void playAnimation() {

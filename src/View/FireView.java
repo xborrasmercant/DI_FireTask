@@ -10,7 +10,7 @@ import java.io.File;
 
 import static java.lang.Thread.sleep;
 
-public class FireView extends JFrame implements ActionListener {
+public class FireView extends JFrame implements ActionListener, ComponentListener {
     public Viewer v;
     public FireModel foregroundImg;
     public ControlPanel controlPanel;
@@ -21,7 +21,6 @@ public class FireView extends JFrame implements ActionListener {
 
         configureFrame();
         addUIComponents();
-
         setVisible(true);
         pack();
         setLocationRelativeTo(null); // Window will appear at the center of the screen.
@@ -31,20 +30,16 @@ public class FireView extends JFrame implements ActionListener {
     private void addControlsToPane(Container panel) {
         GridBagConstraints c = new GridBagConstraints();
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridheight = 1;
         c.gridx = 0;
         c.gridy = 0;
 
-        controlPanel = new ControlPanel(300, 300);
+        controlPanel = new ControlPanel();
         panel.add(controlPanel, c);
     }
 
     private void addViewerToPane(Container panel) {
         GridBagConstraints c = new GridBagConstraints();
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 0;
 
@@ -67,7 +62,7 @@ public class FireView extends JFrame implements ActionListener {
     private void configureFrame() {
         setLayout(new GridBagLayout());
         setTitle("Randomized Fire");
-        setPreferredSize(new Dimension(1000 , 1000));
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Closing the window stops the program.
 
     }
@@ -124,5 +119,27 @@ public class FireView extends JFrame implements ActionListener {
             default:
                 System.err.println("Not treated action: " + e);
         }
+    }
+
+    @Override
+    public void componentResized(ComponentEvent e) {
+        e.getComponent();
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+        System.out.println("Hola");
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+        System.out.println("Hola");
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
+        System.out.println("Hola");
+
     }
 }

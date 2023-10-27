@@ -9,12 +9,12 @@ public class ControlPanel extends JPanel {
     public GeneralConfiguration config;
 
 
-    public ControlPanel(int width, int height) {
+    public ControlPanel() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
 
         setBorder(blackBorder);
         setLayout(new GridBagLayout());
-        setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(350, 650));
         addElementsToControlPanel();
     }
 
@@ -24,6 +24,7 @@ public class ControlPanel extends JPanel {
 
         controls = new AnimationControls();
         config = new GeneralConfiguration();
+        c.fill = GridBagConstraints.BOTH;
 
         c.gridx = 0;
         c.gridy = 0;

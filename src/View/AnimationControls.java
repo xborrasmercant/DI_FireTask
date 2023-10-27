@@ -13,7 +13,6 @@ public class AnimationControls extends JPanel {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
         setBorder(blackBorder);
 
-        setPreferredSize(new Dimension(220,35));
         setLayout(new GridBagLayout());
         addButtonsToPane(this);
     }
@@ -24,8 +23,8 @@ public class AnimationControls extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
         // Default configuration for buttons
-        c.anchor = GridBagConstraints.NORTH;
-        c.fill = GridBagConstraints.HORIZONTAL;
+        //c.anchor = GridBagConstraints.NORTH;
+        //c.fill = GridBagConstraints.HORIZONTAL;
 
         this.playPause = new JToggleButton("Play");
         this.stopButton = new JButton("Stop");
@@ -36,11 +35,10 @@ public class AnimationControls extends JPanel {
         panel.add(this.playPause, c);
 
         c.gridx = 1;
-        panel.add(this.applyButton, c);
-
-        c.gridx = 1;
         panel.add(this.stopButton, c);
 
+        c.gridx = 2;
+        panel.add(this.applyButton, c);
 
     }
 }

@@ -10,7 +10,7 @@ public class FireModel extends BufferedImage {
 
     public FireModel(int width, int height) {
         super(width, height, BufferedImage.TYPE_INT_ARGB);
-        temps = new Temperature(width, height,0.2, 0.5);
+        temps = new Temperature(width, height,0.3, 0.5);
         pal = new Palette();
 
         createFireImage();
@@ -24,7 +24,7 @@ public class FireModel extends BufferedImage {
         temps.next(); // Siguiente iteraci贸n de la matriz de temperaturas
         createFireImage();
         for (int i = 0; i < this.getWidth(); i++) {
-            for (int j = 0; j < this.getHeight(); j++) { // Pintada pixel a pixel en funci贸n de la temperatura
+            for (int j = 0; j < this.getHeight()-1; j++) { // Pintada pixel a pixel en funci贸n de la temperatura
                 //System.out.println(pal.colourPalette[temps.tempMap[j][i]]);
 
 
