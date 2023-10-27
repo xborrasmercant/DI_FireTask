@@ -17,13 +17,18 @@ public class FireController {
 
     public void playAnimation() {
         while (true) {
+            if (FView.v.backgroundImg != null) {
+                FView.v.paintBackground();
+
+            }
             if (FView.getPlayButton().isSelected()) {
-                FView.v.paintElements();
+                FView.v.paintForeground();
+
                 // Animation is played
             }
 
             try {
-                sleep(20);
+                sleep(50);
             } catch (InterruptedException ex) {
                 System.err.println(ex);
             }
