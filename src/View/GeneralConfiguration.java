@@ -1,5 +1,7 @@
 package View;
 
+import CustomGUI.CustomTextField;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -29,34 +31,51 @@ public class GeneralConfiguration extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         int insetAmount = 5;
 
-        c.insets = new Insets(insetAmount, insetAmount, insetAmount, insetAmount);
+        c.insets = new Insets(insetAmount, 0, insetAmount, 0);
+        JLabel widthLabel = new JLabel("Width:");
+        JLabel heightLabel = new JLabel("Height:");
+        JLabel XPosLabel = new JLabel("X Pos:");
+        JLabel YPosLabel = new JLabel("Y Pos:");
 
 
-        fireWidth = new JTextField("Enter width");
-        fireHeight = new JTextField("Enter height");
-        fireXPosition = new JTextField("Enter x position");
-        fireYPosition = new JTextField("Enter y position");
+        fireWidth = new CustomTextField();
+        fireHeight = new CustomTextField();
+        fireXPosition = new CustomTextField();
+        fireYPosition = new CustomTextField();
         backgroundChooser = new JButton("Select Background");
+        c.anchor = GridBagConstraints.CENTER;
 
-        c.gridwidth = 1;
+        c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
-        add(fireWidth, c);
+        add(widthLabel, c);
 
         c.gridx = 1;
+        add(fireWidth, c);
+
+        c.gridx = 2;
+        add(heightLabel, c);
+
+        c.gridx = 3;
         add(fireHeight, c);
 
         c.gridy = 1;
         c.gridx = 0;
-        add(fireXPosition, c);
+        add(XPosLabel, c);
 
         c.gridx = 1;
+        add(fireXPosition, c);
+
+
+        c.gridx = 2;
+        add(YPosLabel, c);
+
+        c.gridx = 3;
         add(fireYPosition, c);
 
-        c.gridwidth = 2;
+        c.gridwidth = 4;
         c.gridx = 0;
         c.gridy = 2;
-        c.anchor = GridBagConstraints.CENTER;
         add(backgroundChooser, c);
 
 

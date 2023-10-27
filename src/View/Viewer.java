@@ -12,17 +12,21 @@ public class Viewer extends Canvas {
     public BufferedImage backgroundImg;
     public FireModel foregroundImg;
     public BufferStrategy bs;
+    int fireWidth;
+    int fireHeight;
+    int fireXPos;
+    int fireYPos;
 
     public Viewer(FireModel foregroundImg) {
         this.foregroundImg = foregroundImg;
         this.bs = null;
         this.setPreferredSize(new Dimension(650,650));
+
     }
 
     @Override
     public void paint(Graphics g) {
         System.out.println("Overrided Paint()");
-
     }
 
     public void loadBackground(File backgroundFile) {
@@ -88,12 +92,19 @@ public class Viewer extends Canvas {
         // We get the Graphics manager from the bufferStrategy and use it to draw the background image.
         Graphics g = bs.getDrawGraphics();
 
-        g.drawImage(this.foregroundImg, (int) (this.getWidth()/2.45), (int) (this.getHeight()/1.95), (int) (this.getWidth()/2.15), (int) (this.getHeight()/3), null);
+        g.drawImage(this.foregroundImg,fireXPos, fireYPos, fireWidth, fireHeight, null);
         this.foregroundImg.next();
 
         bs.show(); // We swap the back buffer with the display one to show the background image and the we release the resources from the graphics manager.
         g.dispose();
 //
+    }
+
+    public void defaultForegroundImage() {
+        fireWidth = 290;
+        fireHeight = 335;
+        fireXPos = 270;
+        fireYPos = 200;
     }
 
 }

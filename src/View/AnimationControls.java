@@ -7,6 +7,7 @@ import java.awt.*;
 public class AnimationControls extends JPanel {
     public JToggleButton playPause;
     public JButton stopButton;
+    public JButton defaultButton;
     public JButton applyButton;
 
     public AnimationControls(){
@@ -21,14 +22,19 @@ public class AnimationControls extends JPanel {
         // Animation control buttons are added to the panel.
 
         GridBagConstraints c = new GridBagConstraints();
+        int insetAmount = 3;
+
+        c.insets = new Insets(insetAmount, insetAmount, insetAmount, insetAmount);
 
         // Default configuration for buttons
         //c.anchor = GridBagConstraints.NORTH;
-        //c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
         this.playPause = new JToggleButton("Play");
         this.stopButton = new JButton("Stop");
+        this.defaultButton = new JButton("Default");
         this.applyButton = new JButton("Apply");
+
 
         c.gridx = 0;
         c.gridy = 0;
@@ -38,6 +44,11 @@ public class AnimationControls extends JPanel {
         panel.add(this.stopButton, c);
 
         c.gridx = 2;
+        panel.add(this.defaultButton, c);
+
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 1;
         panel.add(this.applyButton, c);
 
     }

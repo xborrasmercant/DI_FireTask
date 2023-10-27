@@ -8,6 +8,8 @@ public class FireModel extends BufferedImage {
     public Temperature temps;
     public Palette pal;
 
+
+
     public FireModel(int width, int height) {
         super(width, height, BufferedImage.TYPE_INT_ARGB);
         temps = new Temperature(width, height,0.3, 0.5);
@@ -17,6 +19,7 @@ public class FireModel extends BufferedImage {
         temps.next();
 
     }
+
 
     // Public methods:
     public void next() {

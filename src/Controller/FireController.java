@@ -8,6 +8,7 @@ import static java.lang.Thread.sleep;
 public class FireController {
     protected FireModel foregroundImg;
     protected FireView FView;
+    DTOGeneralParameters gpDTO;
 
     public FireController () {
         foregroundImg = new FireModel(290, 120);
@@ -33,6 +34,11 @@ public class FireController {
             }
         }
     }
+
+    public void getGeneralParameters(DTOGeneralParameters gpDTO) {
+        this.gpDTO = gpDTO;
+    }
+
 
     public static void main(String[] args) {
         FireController mainWindow = new FireController();

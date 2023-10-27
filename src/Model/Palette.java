@@ -13,9 +13,9 @@ public class Palette {
 
     public Palette() {
         this.addColourTarget(255, 255, 255, 255, 255); // Spark
-        this.addColourTarget(220, 200, 253, 207, 88); // YELLOW
-        this.addColourTarget(200, 180, 242, 125, 12); // ORANGE
-        this.addColourTarget(180, 100, 128, 9, 9);  // RED
+        this.addColourTarget(220, 200, 255, 207, 88); // YELLOW
+        this.addColourTarget(200, 180, 255, 125, 12); // ORANGE
+        this.addColourTarget(180, 100, 255, 9, 9);  // RED
         this.addColourTarget(150, 30, 99, 105, 105);  // Grey
         this.addColourTarget(0, 0, 0, 0, 0); // Transparency
 
