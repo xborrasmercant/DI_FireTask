@@ -117,10 +117,7 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 }
                 break;
             case "Default":
-                v.fireWidth = 290;
-                v.fireHeight = 335;
-                v.fireXPos = 270;
-                v.fireYPos = 200;
+                v.foregroundImg = new FireModel(290, 335, 270, 200);
 
                 System.out.println("Default properties have been reset");
                 break;
@@ -129,14 +126,10 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 int fireHeight = Integer.parseInt(getFireHeight());
                 int fireXPos = Integer.parseInt(getFireXPos());
                 int fireYPos = Integer.parseInt(getFireYPos());
-                System.out.println(fireWidth + " " + fireHeight + " " + fireXPos + " " + fireYPos);
+                System.out.println("W: " + fireWidth + " | H: " + fireHeight + " | X: " + fireXPos + " | Y: " + fireYPos);
 
-                v.fireWidth = fireWidth;
-                v.fireHeight = fireHeight;
-                v.fireXPos = fireXPos;
-                v.fireYPos = fireYPos;
-
-                gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
+                v.foregroundImg = new FireModel(fireWidth, fireHeight, fireXPos, fireYPos);
+                //gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
 
 
                 break;
@@ -153,7 +146,6 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                     v.loadBackground(selectedFile);
                     v.paintBackground();
                 }
-
 
                 break;
             default:
