@@ -20,7 +20,12 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
 
         configureFrame();
         addUIComponents();
-        v.defaultForegroundImage();
+        v.setDefaultForegroundImage();
+        setFireWidthToTextField("290");
+        setFireHeightToTextField("130");
+        setFireXPosToTextField("270");
+        setFireYPosToTextField("400");
+
 
         setVisible(true);
         pack();
@@ -60,7 +65,6 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
         getBGButton().addActionListener(this);
         getApplyButton().addActionListener(this);
         getDefaultButton().addActionListener(this);
-
     }
 
     private void configureFrame() {
@@ -80,23 +84,43 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
         return controlPanel.controls.applyButton;
     }
     public JButton getBGButton() {
-        return controlPanel.config.backgroundChooser;
+        return controlPanel.generalConfig.backgroundChooser;
     }
     public JButton getDefaultButton() {
         return controlPanel.controls.defaultButton;
     }
+    public JToggleButton getInvertButton() {
+        return controlPanel.tempConfig.getButtonUpTemps();
+    }
     public String getFireWidth() {
-        return controlPanel.config.fireWidth.getText();
+        return controlPanel.generalConfig.fireWidth.getText();
     }
     public String getFireHeight() {
-        return controlPanel.config.fireHeight.getText();
+        return controlPanel.generalConfig.fireHeight.getText();
     }
     public String getFireXPos() {
-        return controlPanel.config.fireXPosition.getText();
+        return controlPanel.generalConfig.fireXPosition.getText();
     }
     public String getFireYPos() {
-        return controlPanel.config.fireYPosition.getText();
+        return controlPanel.generalConfig.fireYPosition.getText();
     }
+    public void setFireWidthToTextField(String num) {
+        controlPanel.generalConfig.fireWidth.setText(num);
+    }
+    public void setFireHeightToTextField(String num) {
+        controlPanel.generalConfig.fireHeight.setText(num);
+    }
+    public void setFireXPosToTextField(String num) {
+        controlPanel.generalConfig.fireXPosition.setText(num);
+    }
+    public void setFireYPosToTextField(String num) {
+        controlPanel.generalConfig.fireYPosition.setText(num);
+    }
+    public int getCoolPoints() {return controlPanel.tempConfig.getNewCoolPixelsPercentage().getValue();}
+    public int getHotPoints() {return controlPanel.tempConfig.getNewHotPixelsPercentage().getValue();}
+    public String getDivisorNumber() {return controlPanel.tempConfig.getCellsDivider().getText();}
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
@@ -117,10 +141,12 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 }
                 break;
             case "Default":
-                v.fireWidth = 290;
-                v.fireHeight = 335;
-                v.fireXPos = 270;
-                v.fireYPos = 200;
+                v.foregroundImg = new FireModel(290, 130, 270, 400);
+
+                setFireWidthToTextField("290");
+                setFireHeightToTextField("130");
+                setFireXPosToTextField("270");
+                setFireYPosToTextField("400");
 
                 System.out.println("Default properties have been reset");
                 break;
@@ -129,14 +155,21 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 int fireHeight = Integer.parseInt(getFireHeight());
                 int fireXPos = Integer.parseInt(getFireXPos());
                 int fireYPos = Integer.parseInt(getFireYPos());
-                System.out.println(fireWidth + " " + fireHeight + " " + fireXPos + " " + fireYPos);
+                int coolPtge = getCoolPoints();
+                int hotPtge = getHotPoints();
+                //int divisorNum = Integer.parseInt(getDivisorNumber());
 
-                v.fireWidth = fireWidth;
-                v.fireHeight = fireHeight;
-                v.fireXPos = fireXPos;
-                v.fireYPos = fireYPos;
+                System.out.println("========= CONFIGURATION =========");
+                System.out.println("W: " + fireWidth + " | H: " + fireHeight + " | X: " + fireXPos + " | Y: " + fireYPos);
+                System.out.println("Cool %: " + coolPtge + " | Spark %: " + hotPtge);
+                //System.out.println("Divisor Number: " + divisorNum + " | Attenuation: " + 0);
+                System.out.println("==================================");
 
-                gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
+                v.foregroundImg = new FireModel(fireWidth, fireHeight, fireXPos, fireYPos);
+                v.foregroundImg.getTemps().setPercentageColdPoints(coolPtge);
+                v.foregroundImg.getTemps().setPercentageSparks(hotPtge);
+                //v.foregroundImg.getTemps().setDivisor(divisorNum);
+                //gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
 
 
                 break;
@@ -153,8 +186,6 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                     v.loadBackground(selectedFile);
                     v.paintBackground();
                 }
-
-
                 break;
             default:
                 System.err.println("Not treated action: " + e);

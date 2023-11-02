@@ -20,9 +20,9 @@ public class Palette {
         this.addColourTarget(0, 0, 0, 0, 0); // Transparency
 
         this.sortColourTargets();
-        this.printColourTargets();
+        //this.printColourTargets();
         this.calc();
-        this.printPalette();
+        //this.printPalette();
     }
 
     public void printPalette() {
@@ -78,7 +78,7 @@ public class Palette {
 
             colourPalette[x] = new Color (R, G, B, A);
 
-            System.out.println(new Color(R,G,B,A)); // Check if colours are being converted.
+            //System.out.println(new Color(R,G,B,A)); // Check if colours are being converted.
         }
     }
     private void calcChannel(int[] colourTarget1, int[] colourTarget2, int channelPos) {
