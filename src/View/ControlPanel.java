@@ -6,7 +6,8 @@ import java.awt.*;
 
 public class ControlPanel extends JPanel {
     public AnimationControls controls;
-    public GeneralConfiguration config;
+    public GeneralConfiguration generalConfig;
+    public TemperatureConfiguration tempConfig;
 
 
     public ControlPanel() {
@@ -14,23 +15,31 @@ public class ControlPanel extends JPanel {
 
         setBorder(blackBorder);
         setLayout(new GridBagLayout());
-        setPreferredSize(new Dimension(350, 650));
+        setPreferredSize(new Dimension(400, 650));
         addElementsToControlPanel();
     }
 
 
     public void addElementsToControlPanel() {
         GridBagConstraints c = new GridBagConstraints();
+        int insetAmount = 2;
+
+        c.insets = new Insets(2, 10, 2, 10);
 
         controls = new AnimationControls();
-        config = new GeneralConfiguration();
-        c.fill = GridBagConstraints.BOTH;
+        generalConfig = new GeneralConfiguration();
+        tempConfig = new TemperatureConfiguration();
+        c.fill = GridBagConstraints.HORIZONTAL;
 
+        c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
         this.add(controls, c);
 
         c.gridy = 1;
-        this.add(config, c);
+        this.add(generalConfig, c);
+
+        c.gridy = 2;
+        this.add(tempConfig, c);
     }
 }

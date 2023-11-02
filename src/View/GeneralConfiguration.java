@@ -29,21 +29,21 @@ public class GeneralConfiguration extends JPanel {
 
     public void addFieldsToPanel() {
         GridBagConstraints c = new GridBagConstraints();
-        int insetAmount = 5;
 
-        c.insets = new Insets(insetAmount, 0, insetAmount, 0);
+        c.insets = new Insets(5, 5, 5, 5);
         JLabel widthLabel = new JLabel("Width:");
         JLabel heightLabel = new JLabel("Height:");
         JLabel XPosLabel = new JLabel("X Pos:");
         JLabel YPosLabel = new JLabel("Y Pos:");
 
 
-        fireWidth = new CustomTextField();
-        fireHeight = new CustomTextField();
-        fireXPosition = new CustomTextField();
-        fireYPosition = new CustomTextField();
+        fireWidth = new JTextField();
+        fireHeight = new JTextField();
+        fireXPosition = new JTextField();
+        fireYPosition = new JTextField();
         backgroundChooser = new JButton("Select Background");
         c.anchor = GridBagConstraints.CENTER;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
         c.weightx = 1;
         c.gridx = 0;
@@ -66,7 +66,6 @@ public class GeneralConfiguration extends JPanel {
         c.gridx = 1;
         add(fireXPosition, c);
 
-
         c.gridx = 2;
         add(YPosLabel, c);
 
@@ -77,15 +76,6 @@ public class GeneralConfiguration extends JPanel {
         c.gridx = 0;
         c.gridy = 2;
         add(backgroundChooser, c);
-
-
-
-
-
-
-
-
-
     }
 
 }

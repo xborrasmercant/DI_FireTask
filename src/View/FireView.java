@@ -80,22 +80,22 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
         return controlPanel.controls.applyButton;
     }
     public JButton getBGButton() {
-        return controlPanel.config.backgroundChooser;
+        return controlPanel.generalConfig.backgroundChooser;
     }
     public JButton getDefaultButton() {
         return controlPanel.controls.defaultButton;
     }
     public String getFireWidth() {
-        return controlPanel.config.fireWidth.getText();
+        return controlPanel.generalConfig.fireWidth.getText();
     }
     public String getFireHeight() {
-        return controlPanel.config.fireHeight.getText();
+        return controlPanel.generalConfig.fireHeight.getText();
     }
     public String getFireXPos() {
-        return controlPanel.config.fireXPosition.getText();
+        return controlPanel.generalConfig.fireXPosition.getText();
     }
     public String getFireYPos() {
-        return controlPanel.config.fireYPosition.getText();
+        return controlPanel.generalConfig.fireYPosition.getText();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
