@@ -26,6 +26,14 @@ public class FireController {
             if (FView.getPlayButton().isSelected()) {
                 FView.v.paintForeground();
             }
+            if (FView.getInvertButton().isSelected()) {
+                FView.v.foregroundImg.getTemps().setIsInverted(true);
+                System.out.println("Inverted Fire");
+            }
+            else {
+                FView.v.foregroundImg.getTemps().setIsInverted(false);
+                System.out.println("Uninverted Fire");
+            }
 
             try {
                 sleep(50);

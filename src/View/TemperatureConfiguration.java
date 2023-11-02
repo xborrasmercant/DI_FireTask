@@ -25,6 +25,22 @@ public class TemperatureConfiguration extends JPanel {
 
     }
 
+    public JSlider getNewCoolPixelsPercentage() {
+        return newCoolPixelsPercentage;
+    }
+    public JSlider getNewHotPixelsPercentage() {
+        return newHotPixelsPercentage;
+    }
+    public JTextField getCellsDivider() {
+        return cellsDivider;
+    }
+    public JTextField getFixAtenuationFactor() {
+        return fixAtenuationFactor;
+    }
+    public JToggleButton getButtonUpTemps() {
+        return buttonUpTemps;
+    }
+
     public void addFieldsToPanel() {
         GridBagConstraints c = new GridBagConstraints();
         int insetAmount = 5;
@@ -57,7 +73,6 @@ public class TemperatureConfiguration extends JPanel {
         c.gridx = 1;
         add(fixAtenuationFactor, c);
 
-        //c.weightx = 0.0; // Set weightx to 1.0 to make it use all available horizontal space.
         c.fill = 0;
 
         c.gridwidth = 2;

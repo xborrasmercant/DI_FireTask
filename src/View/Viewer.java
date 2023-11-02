@@ -19,10 +19,7 @@ public class Viewer extends Canvas {
 
     public Viewer(FireModel foregroundImg) {
         this.foregroundImg = foregroundImg;
-        fireWidth = this.foregroundImg.getWidth();
-        fireHeight = this.foregroundImg.getHeight();
-        fireXPos = this.foregroundImg.getPosX();
-        fireYPos = this.foregroundImg.getPosY();
+        setDefaultForegroundImage();
         this.bs = null;
         this.setPreferredSize(new Dimension(650,650));
 
@@ -110,11 +107,11 @@ public class Viewer extends Canvas {
 //
     }
 
-    public void defaultForegroundImage() {
+    public void setDefaultForegroundImage() {
         fireWidth = 290;
-        fireHeight = 335;
+        fireHeight = 130;
         fireXPos = 270;
-        fireYPos = 200;
+        fireYPos = 400;
     }
 
 }

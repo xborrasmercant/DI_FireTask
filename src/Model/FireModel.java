@@ -5,21 +5,37 @@ import java.awt.*;
 
 
 public class FireModel extends BufferedImage {
-    public Temperature temps;
-    public Palette pal;
+    private Temperature temps;
+    private Palette pal;
     private int posX, posY;
 
 
 
     public FireModel(int width, int height, int posX, int posY) {
         super(width, height, BufferedImage.TYPE_INT_ARGB);
-        temps = new Temperature(width, height,0.3, 0.5);
+        temps = new Temperature(width, height,30, 50, false, 6);
         pal = new Palette();
         this.posX = posX;
         this.posY = posY;
         createFireImage();
         temps.next();
 
+    }
+
+    public Temperature getTemps() {
+        return temps;
+    }
+
+    public void setTemps(Temperature temps) {
+        this.temps = temps;
+    }
+
+    public Palette getPal() {
+        return pal;
+    }
+
+    public void setPal(Palette pal) {
+        this.pal = pal;
     }
 
     public int getPosX() {
@@ -45,7 +61,7 @@ public class FireModel extends BufferedImage {
         createFireImage();
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getHeight()-1; j++) { // Pintada pixel a pixel en funcion de la temperatura
-                this.setRGB(i, j, pal.colourPalette[temps.tempMap[j][i]].getRGB());
+                this.setRGB(i, j, pal.colourPalette[temps.getTempMap()[j][i]].getRGB());
             }
         }
 
