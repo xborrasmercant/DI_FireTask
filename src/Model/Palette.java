@@ -35,6 +35,32 @@ public class Palette {
             System.out.println();
         }
     }
+
+    public Color[] getColourPalette() {
+        return colourPalette;
+    }
+
+
+    public void setColourPalette(Color[] colourPalette) {
+        this.colourPalette = colourPalette;
+    }
+
+    public int[][] getMatrixPalette() {
+        return matrixPalette;
+    }
+
+    public void setMatrixPalette(int[][] matrixPalette) {
+        this.matrixPalette = matrixPalette;
+    }
+
+    public ArrayList<int[]> getColourTargets() {
+        return colourTargets;
+    }
+
+    public void setColourTargets(ArrayList<int[]> colourTargets) {
+        this.colourTargets = colourTargets;
+    }
+
     public void addColourTarget(int temp, int a, int r, int g, int b) {
         int[] colourTarget = {temp, a, r, g, b};
         colourTargets.add(colourTarget);
