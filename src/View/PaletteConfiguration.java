@@ -61,7 +61,6 @@ public class PaletteConfiguration extends JPanel {
         }
     };
 
-
     public PaletteConfiguration() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
         setBorder(blackBorder);
@@ -78,21 +77,23 @@ public class PaletteConfiguration extends JPanel {
                 int row = palTable.rowAtPoint(e.getPoint());
                 int column = palTable.columnAtPoint(e.getPoint());
                 Color newColour;
-                System.out.println("Row: " + row + " | Column: " + column);
+                printCellInfo(row, column);
+
 
                 if (column == 0) {
-
+                    // No JColorChooser is shown up.
                 }
                 else {
-                    newColour = JColorChooser.showDialog(null, "Select a color", Color.WHITE);
-                    t.setValueAt(newColour, row, 1);
-                    System.out.println(newColour);
-                    //pal.setColourTarget(row, newColour.getAlpha(), newColour.getRed(), newColour.getBlue(), newColour.getGreen());
+                    newColour = JColorChooser.showDialog(null, "Select a color", (Color) t.getValueAt(row, column));
 
+                    if (newColour != null) {
+                        t.setValueAt(newColour, row, 1);
+                        System.out.println(newColour);
+                        pal.setColourTarget(row, newColour.getAlpha(), newColour.getRed(), newColour.getGreen(), newColour.getBlue());
+                        System.out.println(newColour.getAlpha() + " " + newColour.getRed() + " " + newColour.getGreen() + " " + newColour.getBlue());
+                        pal.calc();
+                    }
                 }
-
-
-
             }
         });
 
@@ -140,6 +141,22 @@ public class PaletteConfiguration extends JPanel {
         B = dirtyColourTarget[4];
 
         return new Color (R, G, B, A);
+    }
+
+    public void printCellInfo(int row, int col) {
+        if (col == 0) {
+            System.out.println("Temp: (" + row + "," + col +")");
+        }
+        else {
+            System.out.println("Colour: (" + row + "," + col +")");
+        }
+    }
+
+    public void addTempsToPal() {
+        for (int i = 0; i < palTable.getSize().height; i++) {
+            pal.setColourTargetTemperature(i, (int) palTable.getValueAt(i, 0));
+            System.out.println(i);
+        }
     }
 
     public Palette getPalette() {

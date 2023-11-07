@@ -39,7 +39,6 @@ public class Palette {
         return colourPalette;
     }
 
-
     public void setColourPalette(Color[] colourPalette) {
         this.colourPalette = colourPalette;
     }
@@ -65,6 +64,10 @@ public class Palette {
         colourTargets.get(i)[2] = r;
         colourTargets.get(i)[3] = g;
         colourTargets.get(i)[4] = b;
+    }
+
+    public void setColourTargetTemperature(int i, int temp) {
+        colourTargets.get(i)[0] = temp;
     }
 
     public void addColourTarget(int temp, int a, int r, int g, int b) {

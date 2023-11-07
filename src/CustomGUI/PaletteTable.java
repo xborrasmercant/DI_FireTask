@@ -19,6 +19,8 @@ public class PaletteTable extends JTable {
     }
 
     public void createTableStructure() {
+        Border blackBorder = BorderFactory.createLineBorder(Color.black);
+        setBorder(blackBorder);
         this.setModel(tModel);
 
         tModel.addColumn("Temp");
