@@ -5,14 +5,59 @@ import Model.Palette;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.EventObject;
 
 public class PaletteConfiguration extends JPanel {
-    Palette pal;
-    PaletteTable palTable;
+    private Palette pal;
+    private PaletteTable palTable;
+    private TableCellEditor readOnlyEditor = new TableCellEditor() {
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+
+        @Override
+        public boolean isCellEditable(EventObject anEvent) {
+            return false;
+        }
+
+        @Override
+        public boolean shouldSelectCell(EventObject anEvent) {
+            return true;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            return false;
+        }
+
+        @Override
+        public void cancelCellEditing() {
+
+        }
+
+        @Override
+        public void addCellEditorListener(CellEditorListener l) {
+
+        }
+
+        @Override
+        public void removeCellEditorListener(CellEditorListener l) {
+
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            return null;
+        }
+    };
 
     public PaletteConfiguration() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
@@ -20,6 +65,8 @@ public class PaletteConfiguration extends JPanel {
         setLayout(new GridBagLayout());
         pal = new Palette();
         palTable = new PaletteTable();
+        palTable.setDefaultEditor(Object.class, readOnlyEditor);
+
         addDefaultColorTargets();
         add(palTable);
     }
@@ -37,7 +84,6 @@ public class PaletteConfiguration extends JPanel {
             changeCellBackgroundColor();
         }
     }
-
 
     public void changeCellBackgroundColor() {
         palTable.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {

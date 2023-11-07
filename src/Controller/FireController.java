@@ -32,7 +32,6 @@ public class FireController {
             }
             else {
                 FView.v.foregroundImg.getTemps().setIsInverted(false);
-                System.out.println("Uninverted Fire");
             }
 
             try {
