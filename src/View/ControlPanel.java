@@ -8,7 +8,7 @@ public class ControlPanel extends JPanel {
     public AnimationControls controls;
     public GeneralConfiguration generalConfig;
     public TemperatureConfiguration tempConfig;
-
+    public PaletteConfiguration palConfig;
 
     public ControlPanel() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
@@ -22,24 +22,27 @@ public class ControlPanel extends JPanel {
 
     public void addElementsToControlPanel() {
         GridBagConstraints c = new GridBagConstraints();
-        int insetAmount = 2;
 
         c.insets = new Insets(2, 10, 2, 10);
 
         controls = new AnimationControls();
         generalConfig = new GeneralConfiguration();
         tempConfig = new TemperatureConfiguration();
+        palConfig = new PaletteConfiguration();
         c.fill = GridBagConstraints.HORIZONTAL;
 
         c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(controls, c);
+        add(controls, c);
 
         c.gridy = 1;
-        this.add(generalConfig, c);
+        add(generalConfig, c);
 
         c.gridy = 2;
-        this.add(tempConfig, c);
+        add(tempConfig, c);
+
+        c.gridy = 3;
+        add(palConfig, c);
     }
 }

@@ -5,7 +5,6 @@ import CustomGUI.CustomTextField;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class TemperatureConfiguration extends JPanel {
     private JSlider newCoolPixelsPercentage;

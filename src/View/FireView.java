@@ -119,7 +119,7 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
     public int getCoolPoints() {return controlPanel.tempConfig.getNewCoolPixelsPercentage().getValue();}
     public int getHotPoints() {return controlPanel.tempConfig.getNewHotPixelsPercentage().getValue();}
     public String getDivisorNumber() {return controlPanel.tempConfig.getCellsDivider().getText();}
-
+    public PaletteConfiguration getPaletteConfig() {return controlPanel.palConfig;}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -170,6 +170,8 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 v.foregroundImg.getTemps().setPercentageSparks(hotPtge);
                 //v.foregroundImg.getTemps().setDivisor(divisorNum);
                 //gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
+
+                v.foregroundImg.setPal(getPaletteConfig().getPalette());
 
 
                 break;

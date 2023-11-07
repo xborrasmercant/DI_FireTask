@@ -68,7 +68,7 @@ public class Viewer extends Canvas {
 
         // To use only the bufferStrategy when needed an if statement check if the canvas' bs is already null, in that case, a new bufferStrategy(2) is created.
         if (bs == null) {
-            System.out.println("BufferStrategy does not exists, therefore one with two buffers will be created and assigned to bs.");
+            System.out.println("BufferStrategy does not exists. Creating a new one.");
             this.createBufferStrategy(2);
             bs = getBufferStrategy();
         }
@@ -91,7 +91,7 @@ public class Viewer extends Canvas {
 
         // To use only the bufferStrategy when needed an if statement check if the canvas' bs is already null, in that case, a new bufferStrategy(2) is created.
         if (bs == null) {
-            System.out.println("BufferStrategy does not exists, therefore one with two buffers will be created and assigned to bs.");
+            System.out.println("BufferStrategy does not exists. Creating a new one.");
             this.createBufferStrategy(2);
             bs = getBufferStrategy();
         }
