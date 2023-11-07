@@ -171,7 +171,6 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
                 //v.foregroundImg.getTemps().setDivisor(divisorNum);
                 //gp = new DTOGeneralParameters(fireWidth, fireHeight, fireXPos, fireYPos);
 
-                getPaletteConfig().addTempsToPal();
                 v.foregroundImg.setPal(getPaletteConfig().getPalette());
 
 

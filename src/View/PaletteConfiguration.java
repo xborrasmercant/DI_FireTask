@@ -152,12 +152,6 @@ public class PaletteConfiguration extends JPanel {
         }
     }
 
-    public void addTempsToPal() {
-        for (int i = 0; i < palTable.getSize().height; i++) {
-            pal.setColourTargetTemperature(i, (int) palTable.getValueAt(i, 0));
-            System.out.println(i);
-        }
-    }
 
     public Palette getPalette() {
         return pal;
