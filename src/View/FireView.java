@@ -120,7 +120,6 @@ public class FireView extends JFrame implements ActionListener, ComponentListene
     public int getHotPoints() {return controlPanel.tempConfig.getNewHotPixelsPercentage().getValue();}
     public String getDivisorNumber() {return controlPanel.tempConfig.getCellsDivider().getText();}
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();

@@ -2,7 +2,6 @@ package View;
 
 import CustomGUI.PaletteTable;
 import Model.Palette;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.CellEditorListener;
@@ -10,12 +9,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.EventObject;
 
 public class PaletteConfiguration extends JPanel {
     private Palette pal;
     private PaletteTable palTable;
+    private DefaultTableModel t;
     private TableCellEditor readOnlyEditor = new TableCellEditor() {
 
         @Override
@@ -59,21 +61,37 @@ public class PaletteConfiguration extends JPanel {
         }
     };
 
+
     public PaletteConfiguration() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
         setBorder(blackBorder);
         setLayout(new GridBagLayout());
         pal = new Palette();
         palTable = new PaletteTable();
-        palTable.setDefaultEditor(Object.class, readOnlyEditor);
-
+        t = palTable.getTableModel();
         addDefaultColorTargets();
+        addCellBackgroundRenderer();
+        palTable.setDefaultEditor(Object.class, readOnlyEditor);
+        palTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = palTable.rowAtPoint(e.getPoint());
+                int column = palTable.columnAtPoint(e.getPoint());
+                Color newColour;
+                System.out.println("Row: " + row + " | Column: " + column);
+                newColour = JColorChooser.showDialog(null, "Select a color", Color.WHITE);
+                t.setValueAt(newColour, row, 1);
+                System.out.println(newColour);
+                //pal.setColourTarget(row, newColour.getAlpha(), newColour.getRed(), newColour.getBlue(), newColour.getGreen());
+
+            }
+        });
+
         add(palTable);
     }
 
     public void addDefaultColorTargets() {
         ArrayList<int[]> colourTargets = pal.getColourTargets();
-        DefaultTableModel t = palTable.getTableModel();
         Color convertedColor;
 
         // The colorTarget array is converted to Color datatype and then added to the table.
@@ -81,18 +99,17 @@ public class PaletteConfiguration extends JPanel {
             convertedColor = intToColor(colourTarget);
             Object[] data = {colourTarget[0], convertedColor};
             t.addRow(data);
-            changeCellBackgroundColor();
         }
     }
 
-    public void changeCellBackgroundColor() {
+    public void addCellBackgroundRenderer() {
         palTable.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-                    cell.setBackground((Color) value);
-                    setText("");
+                cell.setBackground((Color) value);
+                setText("");
 
                 return cell;
             }
@@ -101,7 +118,6 @@ public class PaletteConfiguration extends JPanel {
 
     public void addBlankRow() {
         Object[] blankData = {null, null};
-        DefaultTableModel t = palTable.getTableModel();
 
         t.addRow(blankData);
     }
@@ -115,5 +131,29 @@ public class PaletteConfiguration extends JPanel {
         B = dirtyColourTarget[4];
 
         return new Color (R, G, B, A);
+    }
+
+    public Palette getPalette() {
+        return pal;
+    }
+
+    public void setPalette(Palette pal) {
+        this.pal = pal;
+    }
+
+    public PaletteTable getPaletteTable() {
+        return palTable;
+    }
+
+    public void setPaletteTable(PaletteTable palTable) {
+        this.palTable = palTable;
+    }
+
+    public TableCellEditor getReadOnlyEditor() {
+        return readOnlyEditor;
+    }
+
+    public void setReadOnlyEditor(TableCellEditor readOnlyEditor) {
+        this.readOnlyEditor = readOnlyEditor;
     }
 }

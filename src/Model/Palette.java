@@ -8,7 +8,6 @@ import java.util.Collections;
 public class Palette {
     protected Color[] colourPalette = new Color[256];
     protected int[][] matrixPalette = new int[256][4];
-
     protected ArrayList<int[]> colourTargets = new ArrayList<>();
 
     public Palette() {
@@ -59,6 +58,13 @@ public class Palette {
 
     public void setColourTargets(ArrayList<int[]> colourTargets) {
         this.colourTargets = colourTargets;
+    }
+
+    public void setColourTarget(int i, int a, int r, int g, int b) {
+        colourTargets.get(i)[1] = a;
+        colourTargets.get(i)[2] = r;
+        colourTargets.get(i)[3] = g;
+        colourTargets.get(i)[4] = b;
     }
 
     public void addColourTarget(int temp, int a, int r, int g, int b) {
