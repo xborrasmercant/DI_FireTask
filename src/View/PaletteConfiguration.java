@@ -5,6 +5,7 @@ import Model.Palette;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -33,9 +34,24 @@ public class PaletteConfiguration extends JPanel {
             convertedColor = intToColor(colourTarget);
             Object[] data = {colourTarget[0], convertedColor};
             t.addRow(data);
+            changeCellBackgroundColor();
         }
     }
 
+
+    public void changeCellBackgroundColor() {
+        palTable.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                    cell.setBackground((Color) value);
+                    setText("");
+
+                return cell;
+            }
+        });
+    }
 
     public void addBlankRow() {
         Object[] blankData = {null, null};
