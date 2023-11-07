@@ -71,7 +71,7 @@ public class PaletteConfiguration extends JPanel {
         t = palTable.getTableModel();
         addDefaultColorTargets();
         addCellBackgroundRenderer();
-        palTable.setDefaultEditor(Object.class, readOnlyEditor);
+        palTable.setDefaultEditor(Color.class, readOnlyEditor);
         palTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -79,10 +79,19 @@ public class PaletteConfiguration extends JPanel {
                 int column = palTable.columnAtPoint(e.getPoint());
                 Color newColour;
                 System.out.println("Row: " + row + " | Column: " + column);
-                newColour = JColorChooser.showDialog(null, "Select a color", Color.WHITE);
-                t.setValueAt(newColour, row, 1);
-                System.out.println(newColour);
-                //pal.setColourTarget(row, newColour.getAlpha(), newColour.getRed(), newColour.getBlue(), newColour.getGreen());
+
+                if (column == 0) {
+
+                }
+                else {
+                    newColour = JColorChooser.showDialog(null, "Select a color", Color.WHITE);
+                    t.setValueAt(newColour, row, 1);
+                    System.out.println(newColour);
+                    //pal.setColourTarget(row, newColour.getAlpha(), newColour.getRed(), newColour.getBlue(), newColour.getGreen());
+
+                }
+
+
 
             }
         });
